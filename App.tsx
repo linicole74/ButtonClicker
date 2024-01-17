@@ -1,11 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Alert, Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+  const [clickCount, setClickCount] = useState(0);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>Clicks: {clickCount}</Text>
       <StatusBar style="auto" />
+      <Button
+        onPress={() => {
+          Alert.alert("clicked");
+          setClickCount(clickCount + 1);
+        }}
+        title="[ click this button ]"
+        color="#841584"
+      />
     </View>
   );
 }
