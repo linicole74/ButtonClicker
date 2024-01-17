@@ -17,6 +17,21 @@ export default function App() {
         title="[ click this button ]"
         color="#841584"
       />
+      <Text> </Text><Text> </Text><Text> </Text>
+      <Button
+        onPress={() => {
+          Alert.alert("go to news");
+        }}
+        title="[ go to news ]"
+        color="#841584"
+      />
+      <Button
+        onPress={() => {
+          Alert.alert("go to other users' clicks");
+        }}
+        title="[ go to other users' clicks ]"
+        color="#841584"
+      />
     </View>
   );
 }
