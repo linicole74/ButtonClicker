@@ -6,18 +6,24 @@ export default function News({ setScreen }: any) {
 
   const [news, setNews] = useState([]);
   useEffect(() => {
-    let rawArticles = '';
     fetch('https://newsapi.org/v2/everything?q=clicking&from='+date+'&sortBy=popularity&apiKey=33ffb345983c4d6fb11b0820e1ed7911')
       .then((response) => response.json())
-      .then((json) => setNews(json.articles));
+      .then((json) => setNews(json.articles.map((article: any) => {
+        return { title: article.title, publicationDate: (new Date(article.publishedAt)).toLocaleString(), description: article.description };
+      })));
   }, []);
 
   return (
     <View style={styles.container}>
       <ScrollView>
-        
-
-        <Text>{JSON.stringify(news)}</Text>
+        {news.map((article: any, index: number) =>
+          <View key={"news"+index}>
+            <Text style={{fontWeight: "bold"}}>{article.title}</Text>
+            <Text>{article.publicationDate}</Text>
+            <Text>{article.description}</Text>
+            <Text> </Text>
+          </View>
+        )}
       </ScrollView>
       <Text> </Text>
       <Text>Yesterday's Old Clicking-Related News!</Text>
