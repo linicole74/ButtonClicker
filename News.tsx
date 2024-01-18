@@ -5,6 +5,7 @@ export default function News({ setScreen }: any) {
   return (
     <View style={styles.container}>
       <Text>TODO: News</Text>
+      <Text>Take in an array of strings and display them each in a different box, with the text aligned left.</Text>
       <Text> </Text><Text> </Text><Text> </Text>
       <Button
         onPress={() => {
