@@ -1,12 +1,27 @@
-import { useState } from 'react';
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Alert, Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function News({ setScreen }: any) {
+  const date = (new Date(new Date().getTime() - (1 * 24 * 60 * 60 * 1000))).toISOString().split('T')[0];
+
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+    let rawArticles = '';
+    fetch('https://newsapi.org/v2/everything?q=clicking&from='+date+'&sortBy=popularity&apiKey=33ffb345983c4d6fb11b0820e1ed7911')
+      .then((response) => response.json())
+      .then((json) => setNews(json.articles));
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>TODO: News</Text>
-      <Text>Take in an array of strings and display them each in a different box, with the text aligned left.</Text>
-      <Text> </Text><Text> </Text><Text> </Text>
+      <ScrollView>
+        
+
+        <Text>{JSON.stringify(news)}</Text>
+      </ScrollView>
+      <Text> </Text>
+      <Text>Yesterday's Old Clicking-Related News!</Text>
+      <Text> </Text><Text> </Text>
       <Button
         onPress={() => {
           Alert.alert("go to home screen");

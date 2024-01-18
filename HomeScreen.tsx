@@ -3,16 +3,16 @@ import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function HomeScreen({ setScreen }: any) {
   const [clickCount, setClickCount] = useState(0);
-  const [text, onChangeText] = useState(''); // SOURCE: https://reactnative.dev/docs/textinput
+  const [username, setUsername] = useState(''); // SOURCE: https://reactnative.dev/docs/textinput
 
   return (
     <View style={styles.container}>
       <TextInput
-        onChangeText={onChangeText}
-        value={text}
+        onChangeText={setUsername}
+        value={username}
         placeholder="enter username"
       />
-      {text === '' ? '' :
+      {username === '' ? '' :
         <View>
           <Text>Clicks: {clickCount}</Text>
           <Button
