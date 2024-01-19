@@ -1,13 +1,37 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useAppState } from '@react-native-community/hooks'
+import * as Location from 'expo-location';
 
 export default function HomeScreen({ setScreen }: any) {
   const [clickCount, setClickCount] = useState(0);
   const [username, setUsername] = useState(''); // SOURCE: https://reactnative.dev/docs/textinput
+  const appState = useAppState();
+  useEffect(() => {
+    console.log(appState)
+    if (appState === "background") {
+      console.log("here");
+      setTimeout(() => {
+        console.log('hello');
+      }, 500);
+    }
+  }, [appState]);
+
+  const [location, setLocation] = useState({longitude: 0, latitude: 0, altitude: 0});
+  useEffect(() => {
+    (async () => {
+      await Location.requestForegroundPermissionsAsync();
+      let location = await Location.getCurrentPositionAsync();
+      setLocation({ longitude: location.coords.longitude, latitude: location.coords.latitude, altitude: location.coords.altitude || 0 });
+    })();
+  }, []);
 
   return (
     <View style={styles.container}>
+      <Text>Your location:</Text>
+      <Text>    longitude: {location.longitude}</Text>
+      <Text>    latitude: {location.latitude}</Text>
+      <Text>    altitude: {location.altitude === 0 ? "N/A" : location.altitude}</Text>
       <TextInput
         onChangeText={setUsername}
         value={username}
