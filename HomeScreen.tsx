@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useAppState } from '@react-native-community/hooks'
 import * as Location from 'expo-location';
+import * as Notifications from 'expo-notifications';
 
 export default function HomeScreen({ setScreen }: any) {
   const [clickCount, setClickCount] = useState(0);
@@ -9,10 +10,16 @@ export default function HomeScreen({ setScreen }: any) {
   const appState = useAppState();
   useEffect(() => {
     console.log(appState)
-    if (appState === "background") {
-      console.log("here");
-      setTimeout(() => {
-        console.log('hello');
+    if (appState === 'background') {
+      setTimeout(async () => {
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: 'Button Clicker',
+            body: 'click click click',
+            data: { data: "" },
+          },
+          trigger: { seconds: 2 },
+        });
       }, 500);
     }
   }, [appState]);
@@ -23,6 +30,8 @@ export default function HomeScreen({ setScreen }: any) {
       await Location.requestForegroundPermissionsAsync();
       let location = await Location.getCurrentPositionAsync();
       setLocation({ longitude: location.coords.longitude, latitude: location.coords.latitude, altitude: location.coords.altitude || 0 });
+
+      await Notifications.requestPermissionsAsync();
     })();
   }, []);
 
