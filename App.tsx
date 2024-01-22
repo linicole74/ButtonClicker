@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import HomeScreen from './HomeScreen';
 import News from './News';
 import GlobalClicks from './GlobalClicks';
