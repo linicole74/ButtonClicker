@@ -1,3 +1,6 @@
+To partner:
+Please look at the TODO in GlobalClicks.tsx
+
 Database setup:
 
 ```
