@@ -1,5 +1,7 @@
 To partner:
-Please look at the TODO in GlobalClicks.tsx
+
+Please look at the TODO in GlobalClicks.tsx. Also, for dev purposes, comment out all of the code in getData of HomeScreen.tsx and just return a blank string so it doesn't throw an error.
+
 
 Database setup:
 
