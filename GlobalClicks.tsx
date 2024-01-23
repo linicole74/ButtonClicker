@@ -8,7 +8,7 @@ export default function GlobalClicks({ setScreen }: any) {
       <Text>Take in an array of click data objects and display them each in a different box, with the boxes stacked vertically.</Text>
       <Text>Example click data objects:</Text>
       <Text>user: username as a string</Text>
-      <Text>datetime: some sort of datetime object, convert this to a string</Text>
+      <Text>datetime: string of datetime formatted as "2024-01-17T18:52:01", make sure to format it in a more user-friendly way</Text>
       <Text>There's a similar example in News.tsx at the ScrollView tag</Text>
       <Text> </Text><Text> </Text><Text> </Text>
       <Button
