@@ -73,7 +73,6 @@ export default function HomeScreen({ setScreen }: any) {
           <Text> </Text><Text> </Text><Text> </Text>
           <Button
             onPress={() => {
-              Alert.alert("go to news");
               setScreen(0);
             }}
             title="[ go to news ]"
@@ -81,7 +80,6 @@ export default function HomeScreen({ setScreen }: any) {
           />
           <Button
             onPress={() => {
-              Alert.alert("go to other users' clicks");
               setScreen(2);
             }}
             title="[ go to other users' clicks ]"
