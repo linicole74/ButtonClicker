@@ -6,15 +6,13 @@ import * as Notifications from 'expo-notifications';
 import { supabase } from './supabase';
 
 export default function HomeScreen({ setScreen }: any) {
-  const [dbData, setDbData] = useState('');
+  const [dbData, setDbData] = useState<Object[]>([]);
   useEffect(() => {
     (async () => {
       let { data } = await supabase
         .from('clicks_4261')
-        .select(`username, datetime`)
-        .limit(1)
-        .single();
-      setDbData(data ? data.username + ' ' + data.datetime : 'N/A');
+        .select(`username, datetime`);
+      setDbData(data ? data : []);
     })()
   }, []);
   const [clickCount, setClickCount] = useState(0);
@@ -58,13 +56,12 @@ export default function HomeScreen({ setScreen }: any) {
         value={username}
         placeholder="enter username"
       />
-      <Text>{dbData}</Text>
+      <Text>{JSON.stringify(dbData)}</Text>
       {username === '' ? '' :
         <View>
           <Text>Clicks: {clickCount}</Text>
           <Button
             onPress={() => {
-              Alert.alert("clicked");
               setClickCount(clickCount + 1);
             }}
             title="[ click this button ]"
@@ -73,7 +70,6 @@ export default function HomeScreen({ setScreen }: any) {
           <Text> </Text><Text> </Text><Text> </Text>
           <Button
             onPress={() => {
-              Alert.alert("go to news");
               setScreen(0);
             }}
             title="[ go to news ]"
@@ -81,7 +77,6 @@ export default function HomeScreen({ setScreen }: any) {
           />
           <Button
             onPress={() => {
-              Alert.alert("go to other users' clicks");
               setScreen(2);
             }}
             title="[ go to other users' clicks ]"

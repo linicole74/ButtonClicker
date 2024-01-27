@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Alert, Button, StyleSheet, Text, View } from 'react-native';
 
 export default function GlobalClicks({ setScreen }: any) {
@@ -13,7 +12,6 @@ export default function GlobalClicks({ setScreen }: any) {
       <Text> </Text><Text> </Text><Text> </Text>
       <Button
         onPress={() => {
-          Alert.alert("go to home screen");
           setScreen(1);
         }}
         title="[ go to home screen ]"
@@ -21,7 +19,6 @@ export default function GlobalClicks({ setScreen }: any) {
       />
       <Button
         onPress={() => {
-          Alert.alert("go to news");
           setScreen(0);
         }}
         title="[ go to news ]"
