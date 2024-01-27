@@ -3,10 +3,10 @@ import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useAppState } from '@react-native-community/hooks'
 import * as Location from 'expo-location';
 import * as Notifications from 'expo-notifications';
-import { supabase } from './supabase';
+//import { supabase } from './supabase';
 
 export default function HomeScreen({ setScreen }: any) {
-  const [dbData, setDbData] = useState<Object[]>([]);
+  /*const [dbData, setDbData] = useState<Object[]>([]);
   useEffect(() => {
     (async () => {
       let { data } = await supabase
@@ -14,7 +14,7 @@ export default function HomeScreen({ setScreen }: any) {
         .select(`username, datetime`);
       setDbData(data ? data : []);
     })()
-  }, []);
+  }, []);*/
   const [clickCount, setClickCount] = useState(0);
   const [username, setUsername] = useState(''); // SOURCE: https://reactnative.dev/docs/textinput
   const appState = useAppState();
@@ -56,7 +56,7 @@ export default function HomeScreen({ setScreen }: any) {
         value={username}
         placeholder="enter username"
       />
-      <Text>{JSON.stringify(dbData)}</Text>
+      <Text>{/*JSON.stringify(dbData)*/}</Text>
       {username === '' ? '' :
         <View>
           <Text>Clicks: {clickCount}</Text>
