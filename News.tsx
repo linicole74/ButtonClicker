@@ -42,6 +42,13 @@ export default function News({ setScreen }: any) {
         title="[ go to other users' clicks ]"
         color="#841584"
       />
+        <Button
+        onPress = {() => {
+            setScreen(3)
+        }}
+        title="[ see a funny gif ]"
+        color="#841584"
+        />
     </View>
   );
 }

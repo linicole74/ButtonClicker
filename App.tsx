@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import HomeScreen from './HomeScreen';
 import News from './News';
 import GlobalClicks from './GlobalClicks';
+import Gif from './Gif'
 
 export default function App() {
   // news - 0, home screen - 1, global clicks - 2
@@ -13,6 +14,7 @@ export default function App() {
       {screen === 0 ? <News setScreen={setScreen}></News> : ''}
       {screen === 1 ? <HomeScreen setScreen={setScreen}></HomeScreen> : ''}
       {screen === 2 ? <GlobalClicks setScreen={setScreen}></GlobalClicks> : ''}
+      {screen === 3 ? <Gif setScreen={setScreen}></Gif> : ''}
     </View>
   );
 }
