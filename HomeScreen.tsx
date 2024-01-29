@@ -27,7 +27,6 @@ export default function HomeScreen({ setScreen }: any) {
           content: {
             title: 'Button Clicker',
             body: 'click click click',
-            data: { data: "" },
           },
           trigger: { seconds: 2 },
         });
