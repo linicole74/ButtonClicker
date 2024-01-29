@@ -24,6 +24,13 @@ export default function GlobalClicks({ setScreen }: any) {
         title="[ go to news ]"
         color="#841584"
       />
+        <Button
+        onPress = {() => {
+            setScreen(3)
+        }}
+        title="[ see a funny gif ]"
+        color="#841584"
+        />
     </View>
   );
 }
